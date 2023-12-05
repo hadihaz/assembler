@@ -1,1 +1,10 @@
-salam
+    ORG 0
+    LDA A
+    ADD
+    STA C
+B,  ADD C I
+    HLT
+A,  DEC 83
+B,  DEC -23
+C,  DEC 0
+    END
