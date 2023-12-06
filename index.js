@@ -12,9 +12,11 @@ arr = arr[0].map((line) => {
   ];
 });
 console.log(arr);
+
 hex = convertHex(arr);
 write(hex, "../code/hex.txt");
 console.log(hex);
+
 binery = convertBinery(hex);
 write(binery, "../code/bin.txt");
 console.log(binery);
