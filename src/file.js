@@ -7,9 +7,8 @@ module.exports = {
     const data = fs.readFileSync(filePath);
     return data.toString();
   },
-  write: function write(res) {
-    const filePath = path.join(__dirname, "../code/output.txt");
-
-    fs.writeFileSync(filePath, res);
+  write: function write(res, addrees) {
+    const filePath = path.join(__dirname, addrees);
+    fs.writeFileSync(filePath, res.join("\n"));
   },
 };
