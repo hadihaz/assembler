@@ -31,7 +31,7 @@ function convertHex(code) {
   }
 
   hex = hex.map((h) => {
-    return [h[0], h[1]];
+    return [decToHex(h[0]), h[1]];
   });
   return hex;
 }
@@ -134,6 +134,7 @@ function symbolRecognition(line) {
   if (line[1] == "ORG") {
     address = parseInt(line[2]);
   } else if (line[1] == "HEX") {
+    
     hex.push([address, line[2], line[0]]);
     address += 1;
   } else if (line[1] == "DEC") {

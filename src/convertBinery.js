@@ -4,12 +4,18 @@ function hexToBinery(hex) {
 function convertBinery(hex) {
   let binery = [];
   for (let row of (k = hex)) {
+    let a = 0;
     let b = "";
+    a = parseInt(row[0]).toString(2);
+    while (a.length % 4 != 0) {
+      a = "" + 0 + a;
+    }
+
     for (let i = 0; i < row[1].length; i++) {
       let bit = hexToBinery(row[1][i]);
       b = b + " " + bit;
     }
-    binery.push([row[0], b]);
+    binery.push([a, b]);
   }
   return binery;
 }
