@@ -2,7 +2,6 @@ let hex = [];
 let address = [];
 
 function convertHex(code) {
-  // console.log(code)
   for (let line of code) {
     let res = symbolToHexCode(line[1], line[3]);
     if (res) {
@@ -12,9 +11,6 @@ function convertHex(code) {
       symbolRecognition(line);
     }
   }
-
-  // console.log(hex);
-
   for (let i = 0; i <= hex.length; i++) {
     if (hex[i][1] == "7001") {
       break;
@@ -27,10 +23,6 @@ function convertHex(code) {
       });
     }
   }
-
-
-  // console.log(hex);
-
   hex = hex.map((h) => {
     return [decToHex(h[0]), h[1]];
   });
@@ -54,7 +46,6 @@ function decToHex(decimal) {
     for (i = 0; i < hexadecimal.length; i++) {
       output += (0x0f - parseInt(hexadecimal[i], 16)).toString(16);
     }
-
     output = (0x01 + parseInt(output, 16)).toString(16);
     return output.toUpperCase();
   }
