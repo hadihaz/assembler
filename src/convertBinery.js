@@ -4,10 +4,9 @@ function hexToBinery(hex) {
 function convertBinery(hex) {
   let binery = [];
   for (let row of hex) {
-    let a = 0;
+    let a = ("00000000" + (parseInt(row[0], 16)).toString(2)).substr(-8);
     let b = "";
-    a = parseInt(row[0]).toString(2);
-    while (a.length % 4 != 0) {
+    while (a.length % 3 != 0) {
       a = "" + 0 + a;
     }
 

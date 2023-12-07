@@ -2,20 +2,17 @@ let hex = [];
 let address = [];
 
 function convertHex(code) {
+  // console.log(code)
   for (let line of code) {
     let res = symbolToHexCode(line[1], line[3]);
     if (res) {
-      hex.push([address, res, line[2]]);
+      hex.push([address, res, line[2], line[0]]);
       address += 1;
     } else {
       symbolRecognition(line);
     }
   }
-  for (let i of hex) {
-    while (i[0].length % 3 != 0) {
-      i[0] = "" + 0 + i[0];
-    }
-  }
+
   // console.log(hex);
 
   for (let i = 0; i <= hex.length; i++) {
@@ -24,12 +21,14 @@ function convertHex(code) {
     }
     if (hex[i][2]) {
       hex.map((h) => {
-        if (h[2] == hex[i][2] && hex[i][1].length == 1 && hex[i][1] != h[1]) {
+        if (h[3] == hex[i][2] && hex[i][1].length == 1 && hex[i][1] != h[1]) {
           hex[i][1] = hex[i][1] + h[0];
         }
       });
     }
   }
+
+
   // console.log(hex);
 
   hex = hex.map((h) => {
@@ -39,23 +38,19 @@ function convertHex(code) {
 }
 
 function decToHex(decimal) {
-  var size = 4;
-
+  decimal = Number(decimal);
   if (decimal >= 0) {
-    var hexadecimal = decimal.toString(16);
-
-    while (hexadecimal.length % size != 0) {
+    let hexadecimal = decimal.toString(16);
+    while (hexadecimal.length % 4 != 0) {
       hexadecimal = "" + 0 + hexadecimal;
     }
-
-    return hexadecimal;
+    return hexadecimal.toUpperCase();
   } else {
-    var hexadecimal = Math.abs(decimal).toString(16);
-    while (hexadecimal.length % size != 0) {
+    let hexadecimal = Math.abs(decimal).toString(16);
+    while (hexadecimal.length % 4 != 0) {
       hexadecimal = "" + 0 + hexadecimal;
     }
-
-    var output = "";
+    let output = "";
     for (i = 0; i < hexadecimal.length; i++) {
       output += (0x0f - parseInt(hexadecimal[i], 16)).toString(16);
     }
@@ -136,10 +131,10 @@ function symbolRecognition(line) {
   if (line[1] == "ORG") {
     address = parseInt(line[2]);
   } else if (line[1] == "HEX") {
-    hex.push([address, line[2], line[0]]);
+    hex.push([address, line[2], "_", line[0]]);
     address += 1;
   } else if (line[1] == "DEC") {
-    hex.push([address, decToHex(line[2]), line[0]]);
+    hex.push([address, decToHex(line[2]), "_", line[0]]);
     address += 1;
   }
 }
