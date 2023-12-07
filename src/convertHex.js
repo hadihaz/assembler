@@ -16,19 +16,21 @@ function convertHex(code) {
       i[0] = "" + 0 + i[0];
     }
   }
-  for (let i = 0; i <= hex.length; i++) {
+  // console.log(hex);
 
+  for (let i = 0; i <= hex.length; i++) {
     if (hex[i][1] == "7001") {
       break;
     }
     if (hex[i][2]) {
       hex.map((h) => {
-        if (h[2][0] == hex[i][2] && h[1].length != 1) {
+        if (h[2] == hex[i][2] && hex[i][1].length == 1 && hex[i][1] != h[1]) {
           hex[i][1] = hex[i][1] + h[0];
         }
       });
     }
   }
+  // console.log(hex);
 
   hex = hex.map((h) => {
     return [decToHex(h[0]), h[1]];
@@ -134,7 +136,6 @@ function symbolRecognition(line) {
   if (line[1] == "ORG") {
     address = parseInt(line[2]);
   } else if (line[1] == "HEX") {
-    
     hex.push([address, line[2], line[0]]);
     address += 1;
   } else if (line[1] == "DEC") {

@@ -1,6 +1,6 @@
     ORG 0
     LDA A
-C   ADD B
+    ADD B
     STA C
     HLT
 A,  DEC 83

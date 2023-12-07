@@ -6,7 +6,7 @@ let code = [];
 code.push(read().split("\n"));
 code = code[0].map((line) => {
   return [
-    line.slice(0, 4).trim(),
+    line.slice(0, 4).trim().replace(",",""),
     line.slice(4, 8).trim(),
     ...line.slice(8).trim().split(" "),
   ];

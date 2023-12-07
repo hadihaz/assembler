@@ -3,7 +3,7 @@ function hexToBinery(hex) {
 }
 function convertBinery(hex) {
   let binery = [];
-  for (let row of (k = hex)) {
+  for (let row of hex) {
     let a = 0;
     let b = "";
     a = parseInt(row[0]).toString(2);
