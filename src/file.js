@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = {
-  read: function read() {
-    const filePath = path.join(__dirname, "../code/input.txt");
+  read: function read(addrees) {
+    const filePath = path.join(__dirname, addrees);
     const data = fs.readFileSync(filePath);
     return data.toString();
   },
