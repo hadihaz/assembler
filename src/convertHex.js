@@ -26,10 +26,7 @@ function convertHex(code) {
       }
     }
   }
-  for (let i = 0; i <= hex.length; i++) {
-    if (hex[i][1] == "7001") {
-      break;
-    }
+  for (let i = 0; i < hex.length; i++) {
     if (hex[i][2]) {
       hex.map((h) => {
         if (h[3] == hex[i][2] && hex[i][1].length == 1 && hex[i][1] != h[1]) {
@@ -45,7 +42,7 @@ function convertHex(code) {
   }
 
   hex = hex.map((h) => {
-    return [h[0].padStart(4, '0'), h[1]];
+    return [h[0].padStart(4, "0"), h[1]];
   });
   return hex;
 }

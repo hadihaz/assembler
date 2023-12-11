@@ -27,7 +27,55 @@ DIF,HEX 0
 
 _______________
 
+13
 
+    ORG 100
+LOP,CLE
+    LDA Y
+    CIR
+    STA Y
+    SZE
+    BUN ONE
+    BUN ZRO
+ONE,LDA X
+    ADD P
+    STA P
+    CLE
+ZRO,LDA X
+    CIL
+    STA X
+    ISZ CTR
+    BUN LOP
+    HLT
+CTR,DEC -8
+X,  HEX 000F
+Y,  HEX 000B
+P,  HEX 0
+    END
+
+_______________
+
+17
+
+    ORG 200
+    LDA X
+    BSA OR
+    HEX 3AF6
+    STA Y
+    HLT
+X,  HEX 7B95
+Y,  HEX 0
+OR, HEX 0
+    CMA
+    STA TMP
+    LDA OR I
+    CMA
+    AND TMP
+    CMA
+    ISZ OR
+    BUN OR I
+TMP,HEX 0
+    END
 
 
 
