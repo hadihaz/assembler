@@ -4,7 +4,7 @@ function hexToBinery(n){
 function convertBinery(hex) {
   let binery = [];
   for (let row of hex) {
-    a=hexToBinery(row[0])
+    let a=hexToBinery(row[0])
     let b = "";
     for (let i = 0; i < row[1].length; i++) {
       let bit = hexToBinery(row[1][i]);

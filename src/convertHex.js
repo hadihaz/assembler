@@ -45,11 +45,6 @@ function convertHex(code) {
   }
 
   hex = hex.map((h) => {
-    // return [decToHex(h[0]), h[1]];
-    // let adrs = String(h[0]);
-    // while (adrs.length % 3 != 0) {
-    //   adrs = "" + 0 + adrs;
-    // }
     return [h[0].padStart(4, '0'), h[1]];
   });
   return hex;
