@@ -1,9 +1,23 @@
-    ORG 0
-    LDA A
-    ADD B
-    STA C
+    ORG 100
+LOP,CLE
+    LDA Y
+    CIR
+    STA Y
+    SZE
+    BUN ONE
+    BUN ZRO
+ONE,LDA X
+    ADD P
+    STA P
+    CLE
+ZRO,LDA X
+    CIL
+    STA X
+    ISZ CTR
+    BUN LOP
     HLT
-A,  DEC 83
-B,  DEC -23
-C,  DEC 0
+CTR,DEC -8
+X,  HEX 000F
+Y,  HEX 000B
+P,  HEX 0
     END
